@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_150605) do
     t.string "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["source"], name: "unique_source"
-    t.index ["target_id"], name: "unique_target_id"
+    t.index ["source"], name: "index_urls_on_source", unique: true
+    t.index ["target_id"], name: "index_urls_on_target_id", unique: true
   end
 end

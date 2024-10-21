@@ -22,14 +22,16 @@ class UrlsController < ApplicationController
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)
-
-    respond_to do |format|
-      if @url.save
-        format.html { redirect_to @url, notice: "Url was successfully created." }
-        format.json { render :show, status: :created, location: @url }
-      else
+    begin
+      respond_to do |format|
+        if @url.save
+          format.html { redirect_to @url, notice: "Url was successfully created." }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+        end
+      rescue
+        flash[:alert] = "Validation failed: the source #{@url.source} already exists"
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
   end
