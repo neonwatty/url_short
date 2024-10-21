@@ -15,6 +15,10 @@ class UrlsController < ApplicationController
     @url = Url.new
   end
 
+  # GET /urls/1/edit
+  def edit
+  end
+
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)

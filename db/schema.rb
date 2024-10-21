@@ -14,7 +14,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_150605) do
   create_table "urls", force: :cascade do |t|
     t.string "source"
     t.string "target"
+    t.string "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["source"], name: "unique_source"
+    t.index ["target_id"], name: "unique_target_id"
   end
 end

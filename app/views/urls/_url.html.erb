@@ -3,10 +3,8 @@
     <strong class="block font-medium mb-1">Source:</strong>
     <%= url.source %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Target:</strong>
-    <%= url.target %>
+    <%= link_to url.target, url.target, class: 'text-blue-500' %>
   </p>
-
 </div>

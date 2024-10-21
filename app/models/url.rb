@@ -1,4 +1,5 @@
 class Url < ApplicationRecord
+  BASE_URL = "http://localhost:3000"
   validates :source, presence: true
   validates :source, format: { with: URI.regexp }, if: -> { source.present? }
   validates :target, format: { with: URI.regexp }, if: -> { target.present? }
@@ -7,11 +8,10 @@ class Url < ApplicationRecord
 
   private
     def create_target
-        base_url="http://localhost:3000"
         len=8
         ext = SecureRandom.alphanumeric(len)
-        target_string = "#{base_url}/#{ext}"
-        p "hello"
+        target_string = "#{BASE_URL}/targets/#{ext}"
+        self.target_id = ext
         self.target = target_string
     end 
 end
